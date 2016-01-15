@@ -14,25 +14,6 @@ var Graph = function(){
 
 };
 
-// Graph.prototype.Node = function (value) {
-//   var node = {};
-
-//   node.neighbors = {};
-//   node.value = value;
-  
-//   return node;
-// };
-
-Graph.prototype.Edge = function (fromNode, toNode) {
-  var edge = {};
-
-  edge.from = fromNode;
-  edge.to = toNode;
-
-  return edge;
-};
-
-
 // ------------------------
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node){
@@ -91,11 +72,20 @@ Graph.prototype.removeEdge = function(fromNode, toNode){
 // ------------------------
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb){
-  
+  for (var key in this.nodes) {
+    cb(this.nodes[key]);
+  }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ addNode() = O(1)
+ contains() = O(1)
+ removeNode() = O(n)
+ hasEdge = O(1)
+ addEdge = O(1)
+ removeEdge = O(1)
+ forEachNode() = O(n) 
  */
 
 
