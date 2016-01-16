@@ -6,7 +6,6 @@ var Tree = function(value){
     newTree[key] = treeMethods[key];
   }
   
-  
   newTree.children = []; 
   
   return newTree;

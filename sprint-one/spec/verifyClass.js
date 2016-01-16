@@ -36,7 +36,7 @@ define(['../../lib/chai/chai.js', '../../lib/underscore/underscore.js'], functio
       options = _({
         usesNew:             patternIs(                                                 'pseudoclassical'),
         referencesThis:      patternIs(                                                 'pseudoclassical'),
-        extendsPrototype:    patternIs(                                                 'pseudoclassical'),
+        extendsPrototype:    patternIs(                                   'prototypal', 'pseudoclassical'),
         reusesMethods:       patternIs(              'functional-shared', 'prototypal', 'pseudoclassical'),
         referencesReturn:    patternIs('functional', 'functional-shared', 'prototypal'                   ),
         declaresVariables:   patternIs('functional', 'functional-shared', 'prototypal'                   ),
