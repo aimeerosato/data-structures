@@ -6,14 +6,18 @@ var LinkedList = function(){
   list.tail = null;
 
   list.addToTail = function(value){
+    // create a new Node
+    var newNode = Node(value);
     if (list.tail) {
-      list.tail.next = Node(value);
-      list.tail = list.tail.next;
-      list[value] = list.tail;
+      // Make sure previous tail points to new node (new tail)
+      list.tail.next = newNode;
+      // Set newNode previous property - points to old tail
+      newNode.previous = list.tail;
+      // Assign new node to tail
+      list.tail = newNode;
     } else {
-      list.head = Node(value);
+      list.head = newNode;
       list.tail = list.head;
-      list[value] = list.head;
     }
   };
 
@@ -24,27 +28,39 @@ var LinkedList = function(){
     return oldHeadVal;
   };
   
-  list.contains = function (target, currNode) {    
-    if (currNode === undefined) {
-      currNode = list.head;  
-    }
-    
+  list.contains = function (target, currNode) {
+    var wasFound = false;
+        
+    list.each(function(node) {
+      if (node.value === target) {
+        wasFound = true;
+      }
+    });
+
+    return wasFound;
+  };
+
+  list.each = function (callback, currNode) {
+    currNode = currNode === undefined ? list.head : currNode;
+  
     if (currNode === null) {
-      return false;
-    } else if (currNode.value === target){
-      return true;
+      return;
     } else {
-      return list.contains(target, currNode.next);
+      callback(currNode);
+      list.each(callback, currNode.next);
     }
   };
 
   return list;
 };
 
+
+
 var Node = function(value){
   var node = {};
 
   node.value = value;
+  node.previous = null;
   node.next = null;
 
   return node;

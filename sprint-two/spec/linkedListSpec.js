@@ -50,6 +50,38 @@ describe('linkedList', function() {
     linkedList.removeHead();
     expect(linkedList.contains(4)).to.equal(false);
   });
+});
 
-  // add more tests here to test the functionality of linkedList
+describe('doubly-linked-list', function() {
+  xit('should be able to add a new head', function(){
+    // linkedList.addToHead(value);
+    // expect(list.head).to.equal(value); 
+  });
+  
+  xit('should be able to remove the tail', function(){
+    // var removedTail = linkedList.removeTail();
+    // expect(removedTail).to.exist();
+    // expect(removedTail.previous).to.equal(linkedList.tail);
+  });
+  
+  xit('should traverse the list and run a callback on each item', function(){
+    // linkedList.addToTail(4);
+    // linkedList.addToTail(5);
+    // var listContents = [4,5];
+    // var output = [];
+    // var hasEverything = true;
+    // linkedList.each(function(item){ output.push(item) });
+    // for (var i = 0; i < listContents.length; i++) {
+    //   for (var j = 0; j < output.length; j++) {
+    //     hasEverything = hasEverything && listContents[i] === output[j];
+    //   }
+    // }
+    // expect(hasEverything).to.equal(true);
+  });
+  
+  xit('should have a previous property or null when appropriate', function(){
+    // traverse list using new helper function
+    // checking for previous property, or null at the head
+    // expect(linkedList.head.previous).to.be(null);
+  });
 });
