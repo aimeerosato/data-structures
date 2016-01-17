@@ -40,5 +40,77 @@ describe('tree', function() {
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
   });
+});
 
+describe ('tree - extra credit', function(){
+  var tree;
+  
+  beforeEach(function() {
+    tree = Tree();
+    // var hello = function(){console.log('hello world!')};
+    // var emptyobj = {};
+    // var emptyarr = [];
+    
+    tree.addChild(3);
+    tree.addChild('bus');
+    tree.children[0].addChild(4);
+    tree.children[0].children[0].addChild(6);
+    tree.children[1].addChild('car');
+    tree.children[1].addChild('bike');
+    // tree.addChild(emptyarr);
+    // tree.children[2].addChild(emptyobj);
+    // tree.children[2].children[0].addChild(hello);
+    
+    
+    var bus = tree.children[1];
+    var car = tree.children[1].children[0];
+    var bike = tree.children[1].children[1];
+    
+    var treeContents = {'bus': 'bus', 'car': 'car', 'bike': 'bike', 3: 3, 4: 4, 6: 6, 'undefined':undefined};    
+  });
+  
+  it('should add children and keep track of the parent', function () {
+    //first we add child
+    tree.children[1].addChild("motorcycle");
+    // create a reference to our example tree - 'bus'
+    var bus = tree.children[1];
+    //Then we check the child and parent - did we create a tree with motorcycle?
+    expect(bus.contains('motorcycle')).to.equal(true);
+    //Does motorcycle have bus as a parent?
+    expect(bus.children[2].parent).to.equal(bus);
+  });
+
+  it('should remove child from parent and parent from child', function(){
+    bus = tree.children[1];
+    // First remove a child 
+    var childTree = tree.removeFromParent('bus');
+    // Expect to return the child tree
+
+    // Expect the parent to not have any reference to child
+    // Expect the child to not have any reference to parent    
+  });
+
+  it('should perform a callback on all of the nodes in the tree', function() {
+    var bus = tree.children[1];
+    var car = tree.children[1].children[0];
+    var bike = tree.children[1].children[1];
+    
+    var treeContents = {'bus': 'bus', 'car': 'car', 'bike': 'bike', 3: 3, 4: 4, 6: 6};  
+    // Create an output array
+    var output = {};
+    // Traverse the tree with callback
+    tree.traverseTree(function(node) { output[node.value] = node.value; });
+    // Expect everything in treeContents to be contained in output array 
+    var everythingMatches = true;
+    for (var key in treeContents){
+      //compare if key is in output
+      if(output[key]){
+        everythingMatches = everythingMatches && true;
+      } else {
+        everythingMatches = everythingMatches && false;
+      }
+    }
+    expect(everythingMatches).to.equal(true);
+
+  });
 });
