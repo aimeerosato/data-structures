@@ -7,7 +7,7 @@ Implemented stacks and queues using all different intantiation patters: function
 
 Built data structures so they passed specs.  
 
-Completed the following with a partner:
+Completed the following first with a partner and later on my own:
   - set
   - hash table
   - linked list
